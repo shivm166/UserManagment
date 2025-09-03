@@ -144,7 +144,7 @@ const Form = () => {
               className="border-b border-gray-200 pb-2 flex justify-between items-start"
             >
               <div>
-                <strong>{index} :- </strong> 
+               
                 <strong>Name:</strong> {item.name} <br />
                 <strong>Age:</strong> {item.age} <br />
                 <strong>Contact:</strong> {item.contact}
