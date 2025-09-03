@@ -1,31 +1,33 @@
-import React from "react";
 import * as yup from "yup";
 
-const signUpSchema = yup.object().shape({
+// ✅ Signup form validation
+export const signUpSchema = yup.object().shape({
   name: yup
     .string()
-    .min(3, "minimum 3 characters reqviures,")
-    .required("name is missing "),
-  email: yup.string().email().required("email reqvires"),
+    .min(3, "Minimum 3 characters required")
+    .required("Name is required"),
+  email: yup
+    .string()
+    .email("Must be a valid email")
+    .required("Email is required"),
   password: yup
     .string()
-    .min(8, "8 characheter ")
-    .required("password is missing"),
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
 });
 
-const formSchema = yup.object().shape({
+// ✅ Student form validation
+export const formSchema = yup.object().shape({
   name: yup
     .string()
-    .min(3, "minimum 3 characters required")
-    .required("name is missing"),
+    .min(3, "Minimum 3 characters required")
+    .required("Name is required"),
   age: yup
     .number()
-    .min(0, "age must be positive")
-    .required("age is missing"),
+    .min(0, "Age must be positive")
+    .required("Age is required"),
   contact: yup
     .string()
-    .matches(/^[0-9]{10}$/, "must be a valid 10-digit phone number")
-    .required("contact is missing"),
+    .matches(/^[0-9]{10}$/, "Must be a valid 10-digit phone number")
+    .required("Contact is required"),
 });
-
-export default { signUpSchema, formSchema };
