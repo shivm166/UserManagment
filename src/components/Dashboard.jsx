@@ -19,7 +19,7 @@ const Dashboard = () => {
   }
 
 
-  const currentUser = JSON.parse(currentUserString);
+  // Removed unused variable assignment for currentUser
 
   const handleLogout = () => {
     

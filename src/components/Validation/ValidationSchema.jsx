@@ -28,4 +28,4 @@ const formSchema = yup.object().shape({
     .required("contact is missing"),
 });
 
-export { signUpSchema, formSchema };
+export default { signUpSchema, formSchema };
