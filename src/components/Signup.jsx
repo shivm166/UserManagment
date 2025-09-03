@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import signUpSchema from "./Validation/ValidationSchema";
+import {signUpSchema} from "./Validation/ValidationSchema";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
