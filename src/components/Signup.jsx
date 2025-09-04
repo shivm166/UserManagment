@@ -11,16 +11,30 @@ const Signup = () => {
       email: "",
       password: "",
     },
+    
     validationSchema: signUpSchema,
     onSubmit: (values, { resetForm }) => {
       try {
-        alert(JSON.stringify(values));
-        console.log(values);
+        
         resetForm();
         const existingUser = localStorage.getItem("users");
         const users = existingUser ? JSON.parse(existingUser) : [];
+        const foundUser = users.find(
+          (u) => u.email === formik.values.email.toLowerCase()
+        );
+        
+        if (foundUser) {
+          alert("User already exists");
+          return navigate("/login") ;
+        } else {
+          alert("Signup successful! please login");
+        }
+        
+        if (foundUser) return;
+
         const updatedUsers = [...users, values];
         localStorage.setItem("users", JSON.stringify(updatedUsers));
+        
         navigate("/login");
       } catch (error) {
         console.log(error, "signup fails");
@@ -60,7 +74,7 @@ const Signup = () => {
                 type="email"
                 name="email"
                 id="email"
-                value={formik.values.email}
+                value={formik.values.email.trim()}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -78,7 +92,7 @@ const Signup = () => {
                 type="password"
                 name="password"
                 id="password"
-                value={formik.values.password}
+                value={formik.values.password.trim()}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

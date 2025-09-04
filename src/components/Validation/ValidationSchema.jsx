@@ -25,6 +25,7 @@ export const formSchema = yup.object().shape({
   age: yup
     .number()
     .min(0, "Age must be positive")
+    .max(3, "Age must be less than 100")
     .required("Age is required"),
   contact: yup
     .string()
